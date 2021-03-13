@@ -90,13 +90,14 @@ function generatePassword() {
     );
 
     // Check if at least one of character types is truthy
-    if (!isLowerCase && !isUpperCase && !isNumber && !isSpecialCharacter) {
-      // If none of character types are truthy, show alert
-      alert("You must include at least one character type in your password!");
-    } else {
+    if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
       // Now we have all of the user inputs so we have to generate the password!!
       alert("You win!");
+    } else {
+      // If none of character types are truthy, show alert
+      alert("You must include at least one character type in your password!");
     }
+
     // if password doesn't meet criteria, show alert
   } else {
     alert(
