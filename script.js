@@ -91,8 +91,23 @@ function generatePassword() {
 
     // Check if at least one of character types is truthy
     if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
-      // Now we have all of the user inputs so we have to generate the password!!
-      alert("You win!");
+      // Confirm which of the character types is truthy, and combine their characters into a new array
+
+      const chosenOptionsArray = [""];
+      if (isLowerCase) {
+        chosenOptionsArray.push(lowerCaseArray);
+      }
+      if (isUpperCase) {
+        chosenOptionsArray.push(upperCaseArray);
+      }
+      if (isNumber) {
+        chosenOptionsArray.push(numbersArray);
+      }
+      if (isSpecialCharacter) {
+        chosenOptionsArray.push(specialCharacterArray);
+      }
+      // Check if characters were added to new array!
+      console.log("newarray" + chosenOptionsArray);
     } else {
       // If none of character types are truthy, show alert
       alert("You must include at least one character type in your password!");
