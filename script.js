@@ -128,6 +128,10 @@ function generatePassword() {
       // Define new variable for passwordArray
       const passwordArray = getRandomArray(chosenOptionsArray);
       console.log(passwordArray);
+
+      // Join the array into a string
+      var password = passwordArray.join("");
+      return password;
     } else {
       // If none of character types are truthy, show alert
       alert("You must include at least one character type in your password!");
