@@ -122,7 +122,7 @@ function generatePassword() {
         }
         return passwordArray;
       }
-
+      // TO REMOVE - checks that getRandomCharacter function works
       console.log(getRandomCharacter(chosenOptionsArray));
     } else {
       // If none of character types are truthy, show alert
