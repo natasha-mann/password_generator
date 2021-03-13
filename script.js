@@ -143,9 +143,6 @@ function generatePassword() {
       "Password must have at least 8 characters, but no more than 128 characters."
     );
   }
-
-  // Return our created password
-  return password;
 }
 
 // Write password to the #password input
