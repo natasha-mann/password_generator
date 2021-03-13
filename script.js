@@ -109,9 +109,9 @@ function generatePassword() {
           specialCharacterArray
         );
       }
-      // Test to make sure arrays have been combined correctly
-      console.log(chosenOptionsArray);
-      console.log("Array length " + chosenOptionsArray.length);
+      // TO REMOVE - Test to make sure arrays have been combined correctly
+      // console.log(chosenOptionsArray);
+      // console.log("Array length " + chosenOptionsArray.length);
 
       // Select random character from new array
       function getRandomArray(arr) {
@@ -123,11 +123,12 @@ function generatePassword() {
         return passwordArray;
       }
       // TO REMOVE - checks that getRandomCharacter function works
-      console.log(getRandomArray(chosenOptionsArray));
+      // console.log(getRandomArray(chosenOptionsArray));
 
       // Define new variable for passwordArray
       const passwordArray = getRandomArray(chosenOptionsArray);
-      console.log(passwordArray);
+      // TO REMOVE - check that it works
+      // console.log(passwordArray);
 
       // Join the array into a string
       var password = passwordArray.join("");
