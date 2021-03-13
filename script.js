@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//  Variables for all the character types we can choose from
 const lowerCaseArray = [
   "a",
   "b",
@@ -59,14 +60,15 @@ const upperCaseArray = [
 ];
 const numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const specialCharacterArray = ["!", "?", "£", "$", "%", "*", "&", "@", "#"];
+// Variable to store our generated password
+
 var password = "";
 
-// Declare a new function on line 3
+// Variable to store combined array of chosen character types
+var chosenOptionsArray = [];
+
+// Declare a function
 function generatePassword() {
-  // Create a variable to store our generated password
-
-  //  Create variables for all the character types we can choose from
-
   // Prompt for password length
   const passwordLength = prompt(
     "How many characters would you like your password to have?"
@@ -94,7 +96,6 @@ function generatePassword() {
     if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
       // Confirm which of the character types is truthy, and combine their characters into a new array
 
-      var chosenOptionsArray = [];
       if (isLowerCase) {
         chosenOptionsArray.push.apply(chosenOptionsArray, lowerCaseArray);
       }
@@ -110,9 +111,6 @@ function generatePassword() {
           specialCharacterArray
         );
       }
-      // TO REMOVE - Test to make sure arrays have been combined correctly
-      // console.log(chosenOptionsArray);
-      // console.log("Array length " + chosenOptionsArray.length);
 
       // Select random character from new array
       function getRandomArray(arr) {
@@ -124,16 +122,12 @@ function generatePassword() {
         }
         return passwordArray;
       }
-      // TO REMOVE - checks that getRandomCharacter function works
-      // console.log(getRandomArray(chosenOptionsArray));
 
       // Define new variable for passwordArray
       const passwordArray = getRandomArray(chosenOptionsArray);
-      // TO REMOVE - check that it works
-      // console.log(passwordArray);
 
       // Join the array into a string
-      var password = passwordArray.join("");
+      const password = passwordArray.join("");
       return password;
     } else {
       // If none of character types are truthy, show alert
