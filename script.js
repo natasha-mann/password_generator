@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
   // Create a variable to store our generated password
   var password = "";
-
+  //  Create variables for all the character types we can choose from
   const lowerCaseArray = [
     "a",
     "b",
@@ -109,17 +109,21 @@ function generatePassword() {
           specialCharacterArray
         );
       }
-      // TO REMOVE Check if characters were added to new array!
-      console.log("newarray" + chosenOptionsArray);
-      console.log("arraylength" + chosenOptionsArray.length);
-      console.log(lowerCaseArray);
+      // Test to make sure arrays have been combined correctly
+      console.log(chosenOptionsArray);
+      console.log("Array length " + chosenOptionsArray.length);
 
-      //Select random character from new array
-      function randomCharacter(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
+      // Select random character from new array
+      function getRandomCharacter(arr) {
+        var passwordArray = [];
+        for (let i = 0; i < passwordLength.length; i++) {
+          const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
+          passwordArray.push(randomCharacter);
+        }
+        return passwordArray;
       }
 
-      console.log(randomCharacter(chosenOptionsArray));
+      console.log(getRandomCharacter(chosenOptionsArray));
     } else {
       // If none of character types are truthy, show alert
       alert("You must include at least one character type in your password!");
