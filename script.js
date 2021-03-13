@@ -115,6 +115,7 @@ function generatePassword() {
 
       // Select random character from new array
       function getRandomArray(arr) {
+        // set variable for empty password array ready to receive new values
         var passwordArray = [];
         for (let i = 0; i < passwordLength; i++) {
           const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
