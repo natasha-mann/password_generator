@@ -93,21 +93,33 @@ function generatePassword() {
     if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
       // Confirm which of the character types is truthy, and combine their characters into a new array
 
-      const chosenOptionsArray = [""];
+      var chosenOptionsArray = [];
       if (isLowerCase) {
-        chosenOptionsArray.push(lowerCaseArray);
+        chosenOptionsArray.push.apply(chosenOptionsArray, lowerCaseArray);
       }
       if (isUpperCase) {
-        chosenOptionsArray.push(upperCaseArray);
+        chosenOptionsArray.push.apply(chosenOptionsArray, upperCaseArray);
       }
       if (isNumber) {
-        chosenOptionsArray.push(numbersArray);
+        chosenOptionsArray.push.apply(chosenOptionsArray, numbersArray);
       }
       if (isSpecialCharacter) {
-        chosenOptionsArray.push(specialCharacterArray);
+        chosenOptionsArray.push.apply(
+          chosenOptionsArray,
+          specialCharacterArray
+        );
       }
-      // Check if characters were added to new array!
+      // TO REMOVE Check if characters were added to new array!
       console.log("newarray" + chosenOptionsArray);
+      console.log("arraylength" + chosenOptionsArray.length);
+      console.log(lowerCaseArray);
+
+      //Select random character from new array
+      function randomCharacter(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      console.log(randomCharacter(chosenOptionsArray));
     } else {
       // If none of character types are truthy, show alert
       alert("You must include at least one character type in your password!");
