@@ -124,6 +124,10 @@ function generatePassword() {
       }
       // TO REMOVE - checks that getRandomCharacter function works
       console.log(getRandomCharacter(chosenOptionsArray));
+
+      // Define new variable for passwordArray
+      const passwordArray = getRandomArray(chosenOptionsArray);
+      console.log(passwordArray);
     } else {
       // If none of character types are truthy, show alert
       alert("You must include at least one character type in your password!");
