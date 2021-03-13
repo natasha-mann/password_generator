@@ -114,16 +114,16 @@ function generatePassword() {
       console.log("Array length " + chosenOptionsArray.length);
 
       // Select random character from new array
-      function getRandomCharacter(arr) {
+      function getRandomArray(arr) {
         var passwordArray = [];
-        for (let i = 0; i < passwordLength.length; i++) {
+        for (let i = 0; i < passwordLength; i++) {
           const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
           passwordArray.push(randomCharacter);
         }
         return passwordArray;
       }
       // TO REMOVE - checks that getRandomCharacter function works
-      console.log(getRandomCharacter(chosenOptionsArray));
+      console.log(getRandomArray(chosenOptionsArray));
 
       // Define new variable for passwordArray
       const passwordArray = getRandomArray(chosenOptionsArray);
