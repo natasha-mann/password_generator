@@ -64,9 +64,6 @@ const specialCharacterArray = ["!", "?", "£", "$", "%", "*", "&", "@", "#"];
 
 var password = "";
 
-// Variable to store combined array of chosen character types
-var chosenOptionsArray = [];
-
 // Declare a function
 function generatePassword() {
   // Prompt for password length
@@ -95,6 +92,8 @@ function generatePassword() {
     // Check if at least one of character types is truthy
     if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
       // Confirm which of the character types is truthy, and combine their characters into a new array
+      // Variable to store combined array of chosen character types
+      var chosenOptionsArray = [];
 
       if (isLowerCase) {
         chosenOptionsArray.push.apply(chosenOptionsArray, lowerCaseArray);
