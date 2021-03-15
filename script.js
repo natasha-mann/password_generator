@@ -135,10 +135,9 @@ const generatePassword = function () {
 
     // Check if at least one of character types is truthy
     if (validateCharacters()) {
-      // Confirm which of the character types is truthy, and combine their characters into a new array
       // Variable to store combined array of chosen character types
       let chosenOptionsArray = [];
-
+      // Confirm which of the character types is truthy, and combine their characters into a new array
       if (isLowerCase) {
         chosenOptionsArray.push.apply(chosenOptionsArray, lowerCaseArray);
       }
