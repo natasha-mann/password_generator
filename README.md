@@ -8,13 +8,16 @@ Please click [here](https://natasha-mann.github.io/password_generator/) to see t
 
 The aim of this project was to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app runs in the browser and features dynamically updated HTML and CSS powered by JavaScript.
 
-The completed app contains the following elements:
+### How I met the brief:
 
-- User is prompted to input the required password length.
-- User is asked to confirm which of four character types they wish to include in the password.
-- If the suggested password length doesn't meet the pre-specified criteria, and if at least one of the character types is not selected, the user receives an alert with an error message, and the programme exits.
-- Taking into account the user's choices for length and character type, the programme then randomly generates a password.
-- The password is printed to the screen.
+- Added a user prompt for the length of the password, which is then stored as a variable.
+- Validation to check that the password length meets pre-specified criteria (between 8 and 128 characters).
+- User is asked to confirm which of four character types they wish to include in the password and results are stored in variables.
+- Validation to check if at least one character type has been selected.
+- If either of the above validations fail, user is alerted with an error message.
+- Added a function to add characters of selected arrays into a combined array.
+- Added a function which takes a random character from the combined array and then loops through this for the password length and pushes the random characters into a new password array.
+- Joined the password array into a string to be displayed on the user's screen.
 
 ## Screenshots
 
