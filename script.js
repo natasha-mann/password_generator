@@ -91,6 +91,23 @@ const validatePasswordLength = function () {
   }
 };
 
+// Confirm character selection
+const confirmCharacterChoice = function () {
+  isLowerCase = confirm(
+    "Would you like your password to contain lowercase characters?"
+  );
+  isUpperCase = confirm(
+    "Would you like your password to contain uppercase characters?"
+  );
+
+  isNumber = confirm("Would you like your password to contain numbers?");
+
+  isSpecialCharacter = confirm(
+    "Would you like your password to contain special characters?"
+  );
+  return;
+};
+
 // Validate chosen characters
 const validateCharacters = function () {
   if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
@@ -114,19 +131,7 @@ const generatePassword = function () {
 
   // Validation of password length
   if (validatePasswordLength()) {
-    //if password meets criteria, continue with character type confirmations
-    isLowerCase = confirm(
-      "Would you like your password to contain lowercase characters?"
-    );
-    isUpperCase = confirm(
-      "Would you like your password to contain uppercase characters?"
-    );
-
-    isNumber = confirm("Would you like your password to contain numbers?");
-
-    isSpecialCharacter = confirm(
-      "Would you like your password to contain special characters?"
-    );
+    confirmCharacterChoice();
 
     // Check if at least one of character types is truthy
     if (validateCharacters()) {
