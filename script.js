@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//  Variables for all the character types we can choose from
+//  Global Variables
 const lowerCaseArray = [
   "a",
   "b",
@@ -59,7 +59,22 @@ const upperCaseArray = [
   "Z",
 ];
 const numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const specialCharacterArray = ["!", "?", "£", "$", "%", "*", "&", "@", "#"];
+const specialCharacterArray = [
+  "!",
+  "?",
+  "£",
+  "$",
+  "%",
+  "*",
+  "&",
+  "@",
+  "#",
+  ":",
+  ";",
+  "~",
+  "{",
+  "}",
+];
 let isLowerCase;
 let isUpperCase;
 let isNumber;
