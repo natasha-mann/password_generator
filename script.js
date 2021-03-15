@@ -65,8 +65,7 @@ let isUpperCase;
 let isNumber;
 let isSpecialCharacter;
 let passwordLength;
-let passwordArray = [];
-var password = "";
+let password = "";
 
 // Validate password length
 const validatePasswordLength = function () {
@@ -84,16 +83,6 @@ const validateCharacters = function () {
   } else {
     return false;
   }
-};
-
-// Set array for new password
-const setPasswordArray = function (arr) {
-  // set variable for empty password array ready to receive new values
-  for (let i = 0; i < passwordLength; i++) {
-    const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
-    passwordArray.push(randomCharacter);
-  }
-  return passwordArray;
 };
 
 // Join the array into a string
@@ -128,7 +117,7 @@ const generatePassword = function () {
     if (validateCharacters()) {
       // Confirm which of the character types is truthy, and combine their characters into a new array
       // Variable to store combined array of chosen character types
-      const chosenOptionsArray = [];
+      let chosenOptionsArray = [];
 
       if (isLowerCase) {
         chosenOptionsArray.push.apply(chosenOptionsArray, lowerCaseArray);
@@ -145,7 +134,19 @@ const generatePassword = function () {
           specialCharacterArray
         );
       }
-      setPasswordArray(chosenOptionsArray);
+
+      // Set array for new password
+      const setPasswordArray = function (arr) {
+        let passwordArray = [];
+        // set variable for empty password array ready to receive new values
+        for (let i = 0; i < passwordLength; i++) {
+          const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
+          passwordArray.push(randomCharacter);
+        }
+        return passwordArray;
+      };
+      // Define new variable for passwordArray
+      passwordArray = setPasswordArray(chosenOptionsArray);
       joinPassword();
       return password;
     } else {
