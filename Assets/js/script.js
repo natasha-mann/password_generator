@@ -105,7 +105,6 @@ const confirmCharacterChoice = () => {
   isSpecialCharacter = confirm(
     "Would you like your password to contain special characters?"
   );
-  return;
 };
 
 // Validate chosen characters
@@ -136,18 +135,23 @@ const getOptionsArray = () => {
   return optionsArray;
 };
 
+// Function to get a string of random characters from an array
+const getRandomCharacters = (arr) => {
+  const randomCharacters = arr[Math.floor(Math.random() * arr.length)];
+  return randomCharacters;
+};
+
 // Set password Array
 const getPasswordArray = (arr) => {
   const passwordArray = [];
-  // set variable for empty password array ready to receive new values
   for (let i = 0; i < passwordLength; i++) {
-    const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
-    passwordArray.push(randomCharacter);
+    const randomCharacters = getRandomCharacters(arr);
+    passwordArray.push(randomCharacters);
   }
   return passwordArray;
 };
 
-// Join the array into a string
+// Join an array into a string
 const joinPassword = (arr) => {
   password = arr.join("");
 };
