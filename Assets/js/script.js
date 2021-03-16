@@ -79,7 +79,7 @@ let isLowerCase;
 let isUpperCase;
 let isNumber;
 let isSpecialCharacter;
-let passwordLength;
+let passwordLength = 0;
 let password = "";
 
 // Validate password length
@@ -162,6 +162,8 @@ const generatePassword = () => {
   passwordLength = prompt(
     "How many characters would you like your password to have?"
   );
+
+  passwordLength = parseInt(passwordLength);
 
   // Validation of password length
   if (validatePasswordLength()) {
