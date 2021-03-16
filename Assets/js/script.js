@@ -83,7 +83,7 @@ let passwordLength;
 let password = "";
 
 // Validate password length
-const validatePasswordLength = function () {
+const validatePasswordLength = () => {
   if (passwordLength >= 8 && passwordLength <= 128) {
     return true;
   } else {
@@ -92,7 +92,7 @@ const validatePasswordLength = function () {
 };
 
 // Confirm character selection
-const confirmCharacterChoice = function () {
+const confirmCharacterChoice = () => {
   isLowerCase = confirm(
     "Would you like your password to contain lowercase characters?"
   );
@@ -109,7 +109,7 @@ const confirmCharacterChoice = function () {
 };
 
 // Validate chosen characters
-const validateCharacters = function () {
+const validateCharacters = () => {
   if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
     return true;
   } else {
@@ -118,7 +118,7 @@ const validateCharacters = function () {
 };
 
 // Create combined array
-const getOptionsArray = function () {
+const getOptionsArray = () => {
   const optionsArray = [];
   // Confirm which of the character types is truthy, and combine their characters into a new array
   if (isLowerCase) {
@@ -137,7 +137,7 @@ const getOptionsArray = function () {
 };
 
 // Set password Array
-const getPasswordArray = function (arr) {
+const getPasswordArray = (arr) => {
   const passwordArray = [];
   // set variable for empty password array ready to receive new values
   for (let i = 0; i < passwordLength; i++) {
@@ -148,12 +148,12 @@ const getPasswordArray = function (arr) {
 };
 
 // Join the array into a string
-const joinPassword = function (arr) {
+const joinPassword = (arr) => {
   password = arr.join("");
 };
 
 // Main App function
-const generatePassword = function () {
+const generatePassword = () => {
   // Prompt for password length
   passwordLength = prompt(
     "How many characters would you like your password to have?"
