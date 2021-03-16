@@ -117,9 +117,39 @@ const validateCharacters = function () {
   }
 };
 
+// Create combined array
+const getOptionsArray = function () {
+  const optionsArray = [];
+  // Confirm which of the character types is truthy, and combine their characters into a new array
+  if (isLowerCase) {
+    optionsArray.push.apply(optionsArray, lowerCaseArray);
+  }
+  if (isUpperCase) {
+    optionsArray.push.apply(optionsArray, upperCaseArray);
+  }
+  if (isNumber) {
+    optionsArray.push.apply(optionsArray, numbersArray);
+  }
+  if (isSpecialCharacter) {
+    optionsArray.push.apply(optionsArray, specialCharacterArray);
+  }
+  return optionsArray;
+};
+
+// Set password Array
+const getPasswordArray = function (arr) {
+  const passwordArray = [];
+  // set variable for empty password array ready to receive new values
+  for (let i = 0; i < passwordLength; i++) {
+    const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
+    passwordArray.push(randomCharacter);
+  }
+  return passwordArray;
+};
+
 // Join the array into a string
-const joinPassword = function () {
-  password = passwordArray.join("");
+const joinPassword = function (arr) {
+  password = arr.join("");
 };
 
 // Main App function
@@ -135,38 +165,11 @@ const generatePassword = function () {
 
     // Check if at least one of character types is truthy
     if (validateCharacters()) {
-      // Variable to store combined array of chosen character types
-      let chosenOptionsArray = [];
-      // Confirm which of the character types is truthy, and combine their characters into a new array
-      if (isLowerCase) {
-        chosenOptionsArray.push.apply(chosenOptionsArray, lowerCaseArray);
-      }
-      if (isUpperCase) {
-        chosenOptionsArray.push.apply(chosenOptionsArray, upperCaseArray);
-      }
-      if (isNumber) {
-        chosenOptionsArray.push.apply(chosenOptionsArray, numbersArray);
-      }
-      if (isSpecialCharacter) {
-        chosenOptionsArray.push.apply(
-          chosenOptionsArray,
-          specialCharacterArray
-        );
-      }
+      const optionsArray = getOptionsArray();
 
       // Set array for new password
-      const setPasswordArray = function (arr) {
-        let passwordArray = [];
-        // set variable for empty password array ready to receive new values
-        for (let i = 0; i < passwordLength; i++) {
-          const randomCharacter = arr[Math.floor(Math.random() * arr.length)];
-          passwordArray.push(randomCharacter);
-        }
-        return passwordArray;
-      };
-      // Define new variable for passwordArray
-      passwordArray = setPasswordArray(chosenOptionsArray);
-      joinPassword();
+      const passwordArray = getPasswordArray(optionsArray);
+      joinPassword(passwordArray);
       return password;
     } else {
       // If none of character types are truthy, show alert
