@@ -58,7 +58,7 @@ const upperCaseArray = [
   "Y",
   "Z",
 ];
-const numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const specialCharacterArray = [
   "!",
   "?",
@@ -79,10 +79,10 @@ let isLowerCase;
 let isUpperCase;
 let isNumber;
 let isSpecialCharacter;
-let passwordLength = 0;
+let passwordLength;
 let password = "";
 
-// Validate password length
+// Validate password length meets criteria
 const validatePasswordLength = () => {
   if (passwordLength >= 8 && passwordLength <= 128) {
     return true;
@@ -91,7 +91,7 @@ const validatePasswordLength = () => {
   }
 };
 
-// Confirm character selection
+// Confirm user's character selection
 const confirmCharacterChoice = () => {
   isLowerCase = confirm(
     "Would you like your password to contain lowercase characters?"
@@ -107,7 +107,7 @@ const confirmCharacterChoice = () => {
   );
 };
 
-// Validate chosen characters
+// Validate that at least one character type has been chosen
 const validateCharacters = () => {
   if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
     return true;
@@ -116,7 +116,7 @@ const validateCharacters = () => {
   }
 };
 
-// Create combined array
+// Create combined array from selected character types
 const getOptionsArray = () => {
   const optionsArray = [];
   // Confirm which of the character types is truthy, and combine their characters into a new array
@@ -135,13 +135,13 @@ const getOptionsArray = () => {
   return optionsArray;
 };
 
-// Function to get a string of random characters from an array
+// Function to randomize the characters in an array, returns a string
 const getRandomCharacters = (arr) => {
   const randomCharacters = arr[Math.floor(Math.random() * arr.length)];
   return randomCharacters;
 };
 
-// Set password Array
+// Set password array according to user selected length and using the randomly shuffled array of chosen character types
 const getPasswordArray = (arr) => {
   const passwordArray = [];
   for (let i = 0; i < passwordLength; i++) {
@@ -162,7 +162,7 @@ const generatePassword = () => {
   passwordLength = prompt(
     "How many characters would you like your password to have?"
   );
-
+  // convert passwordLength from string to number
   passwordLength = parseInt(passwordLength);
 
   // Validation of password length
