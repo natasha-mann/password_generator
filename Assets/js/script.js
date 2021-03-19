@@ -75,15 +75,9 @@ const specialCharacterArray = [
   "{",
   "}",
 ];
-let isLowerCase;
-let isUpperCase;
-let isNumber;
-let isSpecialCharacter;
-let passwordLength;
-let password = "";
 
 // Validate password length meets criteria
-const validatePasswordLength = () => {
+const validatePasswordLength = (passwordLength) => {
   if (passwordLength >= 8 && passwordLength <= 128) {
     return true;
   } else {
@@ -105,11 +99,22 @@ const confirmCharacterChoice = () => {
   isSpecialCharacter = confirm(
     "Would you like your password to contain special characters?"
   );
+  return {
+    isLowerCase,
+    isUpperCase,
+    isNumber,
+    isSpecialCharacter,
+  };
 };
 
 // Validate that at least one character type has been chosen
-const validateCharacters = () => {
-  if (isLowerCase || isUpperCase || isNumber || isSpecialCharacter) {
+const validateCharacters = (characterChoices) => {
+  if (
+    characterChoices.isLowerCase ||
+    characterChoices.isUpperCase ||
+    characterChoices.isNumber ||
+    characterChoices.isSpecialCharacter
+  ) {
     return true;
   } else {
     return false;
@@ -117,19 +122,19 @@ const validateCharacters = () => {
 };
 
 // Create combined array from selected character types
-const getOptionsArray = () => {
+const getOptionsArray = (characterChoices) => {
   const optionsArray = [];
   // Confirm which of the character types is truthy, and combine their characters into a new array
-  if (isLowerCase) {
+  if (characterChoices.isLowerCase) {
     optionsArray.push.apply(optionsArray, lowerCaseArray);
   }
-  if (isUpperCase) {
+  if (characterChoices.isUpperCase) {
     optionsArray.push.apply(optionsArray, upperCaseArray);
   }
-  if (isNumber) {
+  if (characterChoices.isNumber) {
     optionsArray.push.apply(optionsArray, numbersArray);
   }
-  if (isSpecialCharacter) {
+  if (characterChoices.isSpecialCharacter) {
     optionsArray.push.apply(optionsArray, specialCharacterArray);
   }
   return optionsArray;
@@ -142,7 +147,7 @@ const getRandomCharacters = (arr) => {
 };
 
 // Set password array according to user selected length and using the randomly shuffled array of chosen character types
-const getPasswordArray = (arr) => {
+const getPasswordArray = (arr, passwordLength) => {
   const passwordArray = [];
   for (let i = 0; i < passwordLength; i++) {
     const randomCharacters = getRandomCharacters(arr);
@@ -153,29 +158,30 @@ const getPasswordArray = (arr) => {
 
 // Join an array into a string
 const joinPassword = (arr) => {
-  password = arr.join("");
+  let password = arr.join("");
+  return password;
 };
 
 // Main App function
 const generatePassword = () => {
   // Prompt for password length
-  passwordLength = prompt(
+  let passwordLength = prompt(
     "How many characters would you like your password to have?"
   );
   // convert passwordLength from string to number
   passwordLength = parseInt(passwordLength);
 
   // Validation of password length
-  if (validatePasswordLength()) {
-    confirmCharacterChoice();
+  if (validatePasswordLength(passwordLength)) {
+    const characterChoices = confirmCharacterChoice();
 
     // Check if at least one of character types is truthy
-    if (validateCharacters()) {
-      const optionsArray = getOptionsArray();
+    if (validateCharacters(characterChoices)) {
+      const optionsArray = getOptionsArray(characterChoices);
 
       // Set array for new password
-      const passwordArray = getPasswordArray(optionsArray);
-      joinPassword(passwordArray);
+      const passwordArray = getPasswordArray(optionsArray, passwordLength);
+      let password = joinPassword(passwordArray);
       return password;
     } else {
       // If none of character types are truthy, show alert
