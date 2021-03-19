@@ -78,11 +78,7 @@ const specialCharacterArray = [
 
 // Validate password length meets criteria
 const validatePasswordLength = (passwordLength) => {
-  if (passwordLength >= 8 && passwordLength <= 128) {
-    return true;
-  } else {
-    return false;
-  }
+  return passwordLength >= 8 && passwordLength <= 128;
 };
 
 // Confirm user's character selection
