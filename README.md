@@ -4,7 +4,7 @@
 
 - [Project Link](#project-link)
 - [About the Project](#about-the-project)
-  - [How I met the brief:](#how-i-met-the-brief)
+  - [How I met the brief](#how-i-met-the-brief)
 - [Screenshots](#screenshots)
 
 ## Project Link
@@ -15,7 +15,7 @@ Please click [here](https://natasha-mann.github.io/password_generator/) to see t
 
 The aim of this project was to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app runs in the browser and features dynamically updated HTML and CSS powered by JavaScript.
 
-### How I met the brief:
+### How I met the brief
 
 - Added a user prompt for the length of the password, which is then stored as a variable.
 - Added a validation to check that the password length meets pre-specified criteria (between 8 and 128 characters).
