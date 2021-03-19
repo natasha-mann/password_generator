@@ -105,16 +105,12 @@ const confirmCharacterChoice = () => {
 
 // Validate that at least one character type has been chosen
 const validateCharacters = (characterChoices) => {
-  if (
+  return (
     characterChoices.isLowerCase ||
     characterChoices.isUpperCase ||
     characterChoices.isNumber ||
     characterChoices.isSpecialCharacter
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+  );
 };
 
 // Create combined array from selected character types
