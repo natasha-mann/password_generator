@@ -132,13 +132,13 @@ const getOptionsArray = (characterChoices) => {
   return optionsArray;
 };
 
-// Function to randomize the characters in an array, returns a string
+// Function to randomize the characters in an array, takes in an array, returns a string
 const getRandomCharacters = (arr) => {
   const randomCharacters = arr[Math.floor(Math.random() * arr.length)];
   return randomCharacters;
 };
 
-// Set password array according to user selected length and using the randomly shuffled array of chosen character types
+// Set password array according to user selected length, takes in an array and the password length
 const getPasswordArray = (arr, passwordLength) => {
   const passwordArray = [];
   for (let i = 0; i < passwordLength; i++) {
@@ -167,13 +167,14 @@ const generatePassword = () => {
   if (validatePasswordLength(passwordLength)) {
     const characterChoices = confirmCharacterChoice();
 
-    // Check if at least one of character types is truthy
+    // Validation of character choices
     if (validateCharacters(characterChoices)) {
       const optionsArray = getOptionsArray(characterChoices);
 
-      // Set array for new password
+      // Set new password array
       const passwordArray = getPasswordArray(optionsArray, passwordLength);
       let password = joinPassword(passwordArray);
+
       return password;
     } else {
       // If none of character types are truthy, show alert
